@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-09-27T06:45:32.876Z</updated>
+  <updated>2017-09-27T08:27:07.007Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,94 +17,22 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>webpack插件开发</title>
-    <link href="http://yoursite.com/2017/09/27/webpack%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/"/>
-    <id>http://yoursite.com/2017/09/27/webpack插件开发/</id>
-    <published>2017-09-27T07:25:36.039Z</published>
-    <updated>2017-09-27T06:45:32.876Z</updated>
+    <title>目标</title>
+    <link href="http://yoursite.com/2015/10/20/%E7%9B%AE%E6%A0%87/"/>
+    <id>http://yoursite.com/2015/10/20/目标/</id>
+    <published>2015-10-20T08:10:40.000Z</published>
+    <updated>2017-09-27T08:27:07.007Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div
-        
-      
+      杂记
     
     </summary>
     
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://yoursite.com/2017/09/27/hello-world/"/>
-    <id>http://yoursite.com/2017/09/27/hello-world/</id>
-    <published>2017-09-27T07:25:36.038Z</published>
-    <updated>2017-09-27T01:25:47.945Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a
-        
-      
-    
-    </summary>
+      <category term="杂记" scheme="http://yoursite.com/categories/%E6%9D%82%E8%AE%B0/"/>
     
     
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="http://yoursite.com/2017/09/27/suoxue/"/>
-    <id>http://yoursite.com/2017/09/27/suoxue/</id>
-    <published>2017-09-27T07:25:36.038Z</published>
-    <updated>2017-09-27T04:44:30.361Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;nihao&quot;&gt;&lt;a href=&quot;#nihao&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>webpack配置</title>
-    <link href="http://yoursite.com/2017/09/27/webpack%E9%85%8D%E7%BD%AE/"/>
-    <id>http://yoursite.com/2017/09/27/webpack配置/</id>
-    <published>2017-09-27T06:51:18.000Z</published>
-    <updated>2017-09-27T07:06:51.924Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div
-        
-      
-    
-    </summary>
-    
-      <category term="技术" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="webpack javascript" scheme="http://yoursite.com/tags/webpack-javascript/"/>
+      <category term="感悟" scheme="http://yoursite.com/tags/%E6%84%9F%E6%82%9F/"/>
     
   </entry>
   

@@ -264,7 +264,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/27/CSS未知宽高元素水平垂直居中-1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/06/02/box-sizing粗略介绍/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="石进华">
@@ -283,7 +283,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/27/CSS未知宽高元素水平垂直居中-1/" itemprop="url">CSS未知宽高元素水平垂直居中</a></h1>
+                <a class="post-title-link" href="/2016/06/02/box-sizing粗略介绍/" itemprop="url">CSS未知宽高元素水平垂直居中</a></h1>
         
 
         <div class="post-meta">
@@ -295,8 +295,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-27T17:35:53+08:00">
-                2017-09-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-02T08:10:40+08:00">
+                2016-06-02
               </time>
             
 
@@ -305,6 +305,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -335,7 +357,19 @@
       
         
           
-            
+            <h3 id="css3-box-sizing属性"><a href="#css3-box-sizing属性" class="headerlink" title="css3 box-sizing属性"></a>css3 box-sizing属性</h3><p><strong>box-sizing</strong>属性可以为三个值之一：</p>
+<ul>
+<li>content-box（default）</li>
+<li>border-box</li>
+<li>padding-box</li>
+</ul>
+<p><strong>content-box</strong>，border和padding不计算入width之内</p>
+<p><strong>padding-box</strong>，padding计算入width内</p>
+<p><strong>border-box</strong>，border和padding计算入width之内，其实就是怪异模式了~</p>
+<p>ie8+浏览器支持<strong>content-box</strong>和<strong>border-box</strong>；</p>
+<p>ff则支持全部三个值。</p>
+<p>使用时：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">-webkit-box-sizing: 100px; // for ios-safari, android</div><div class="line"></div><div class="line">-moz-box-sizing:100px; //for ff</div><div class="line"></div><div class="line">box-sizing:100px; //for other</div></pre></td></tr></table></figure>
           
         
       
@@ -732,7 +766,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

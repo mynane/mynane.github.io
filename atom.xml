@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-09-27T09:35:53.862Z</updated>
+  <updated>2017-09-27T09:41:30.312Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -18,15 +18,29 @@
   
   <entry>
     <title>CSS未知宽高元素水平垂直居中</title>
-    <link href="http://yoursite.com/2017/09/27/CSS%E6%9C%AA%E7%9F%A5%E5%AE%BD%E9%AB%98%E5%85%83%E7%B4%A0%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD-1/"/>
-    <id>http://yoursite.com/2017/09/27/CSS未知宽高元素水平垂直居中-1/</id>
-    <published>2017-09-27T09:35:53.000Z</published>
-    <updated>2017-09-27T09:35:53.862Z</updated>
+    <link href="http://yoursite.com/2016/06/02/box-sizing%E7%B2%97%E7%95%A5%E4%BB%8B%E7%BB%8D/"/>
+    <id>http://yoursite.com/2016/06/02/box-sizing粗略介绍/</id>
+    <published>2016-06-02T00:10:40.000Z</published>
+    <updated>2017-09-27T09:41:30.312Z</updated>
     
     <summary type="html">
     
+      
+      
+        
+        
+          &lt;h3 id=&quot;css3-box-sizing属性&quot;&gt;&lt;a href=&quot;#css3-box-sizing属性&quot; class=&quot;headerlink&quot; title=&quot;css3 box-sizing属性&quot;&gt;&lt;/a&gt;css3
+        
+      
+    
     </summary>
     
+      <category term="技术" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="css3" scheme="http://yoursite.com/tags/css3/"/>
+    
+      <category term="box-sizing" scheme="http://yoursite.com/tags/box-sizing/"/>
     
   </entry>
   

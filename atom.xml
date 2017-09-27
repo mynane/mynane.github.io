@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-09-27T08:27:07.007Z</updated>
+  <updated>2017-09-27T09:35:53.862Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,22 +17,64 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>目标</title>
-    <link href="http://yoursite.com/2015/10/20/%E7%9B%AE%E6%A0%87/"/>
-    <id>http://yoursite.com/2015/10/20/目标/</id>
-    <published>2015-10-20T08:10:40.000Z</published>
-    <updated>2017-09-27T08:27:07.007Z</updated>
+    <title>CSS未知宽高元素水平垂直居中</title>
+    <link href="http://yoursite.com/2017/09/27/CSS%E6%9C%AA%E7%9F%A5%E5%AE%BD%E9%AB%98%E5%85%83%E7%B4%A0%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD-1/"/>
+    <id>http://yoursite.com/2017/09/27/CSS未知宽高元素水平垂直居中-1/</id>
+    <published>2017-09-27T09:35:53.000Z</published>
+    <updated>2017-09-27T09:35:53.862Z</updated>
     
     <summary type="html">
     
-      杂记
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>CSS未知宽高元素水平垂直居中</title>
+    <link href="http://yoursite.com/2016/05/20/CSS%E6%9C%AA%E7%9F%A5%E5%AE%BD%E9%AB%98%E5%85%83%E7%B4%A0%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD/"/>
+    <id>http://yoursite.com/2016/05/20/CSS未知宽高元素水平垂直居中/</id>
+    <published>2016-05-20T04:00:40.000Z</published>
+    <updated>2017-09-27T09:33:35.579Z</updated>
+    
+    <summary type="html">
+    
+      CSS未知宽高元素水平垂直居中(四种方式实现)
+    
+    </summary>
+    
+      <category term="技术" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="css" scheme="http://yoursite.com/tags/css/"/>
+    
+      <category term="布局" scheme="http://yoursite.com/tags/%E5%B8%83%E5%B1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>目标</title>
+    <link href="http://yoursite.com/2016/05/10/%E7%9B%AE%E6%A0%87/"/>
+    <id>http://yoursite.com/2016/05/10/目标/</id>
+    <published>2016-05-10T08:10:40.000Z</published>
+    <updated>2017-09-27T09:23:24.038Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h4 id=&quot;目标&quot;&gt;&lt;a href=&quot;#目标&quot; class=&quot;headerlink&quot;
+        
+      
     
     </summary>
     
       <category term="杂记" scheme="http://yoursite.com/categories/%E6%9D%82%E8%AE%B0/"/>
     
     
-      <category term="感悟" scheme="http://yoursite.com/tags/%E6%84%9F%E6%82%9F/"/>
+      <category term="杂记" scheme="http://yoursite.com/tags/%E6%9D%82%E8%AE%B0/"/>
     
   </entry>
   

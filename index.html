@@ -409,9 +409,9 @@
       
         
           
-            <h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><p>传统web技术很难对文件进行操作，h5的技术新起，给前端很多的可能。</p>
-<h5 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h5><p>有这么一个需求，在微信端有上传图片的需求，但是问题是，图片太大，需要等待的时间很长的响应时间，而且失败的可能性很大，业务方并不是强制需要原图，图片可以压缩缩放。</p>
-<h5 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h5><p>代码：</p>
+            <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>传统web技术很难对文件进行操作，h5的技术新起，给前端很多的可能。</p>
+<h4 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h4><p>有这么一个需求，在微信端有上传图片的需求，但是问题是，图片太大，需要等待的时间很长的响应时间，而且失败的可能性很大，业务方并不是强制需要原图，图片可以压缩缩放。</p>
+<h4 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h4><p>代码：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * https://github.com/mynane | Released under MIT license</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> * 图片转化为base64 并实现缩放和控制图片质量</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> * @param &#123;Object&#125; file input file 对象</span></div><div class="line"><span class="comment"> * @maxLen &#123;number&#125; maxLen 图片最大长度和宽度</span></div><div class="line"><span class="comment"> * @param &#123;number&#125; quality 图片质量1-100</span></div><div class="line"><span class="comment"> * @param &#123;Function&#125; callBack 成功回调</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">img2Base64</span>(<span class="params">file, maxLen, quality, callBack</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> img = <span class="keyword">new</span> Image();</div><div class="line">    <span class="comment">//读取客户端上的文件</span></div><div class="line">    <span class="keyword">var</span> reader = <span class="keyword">new</span> FileReader();</div><div class="line">    reader.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="comment">//读取到的文件内容.这个属性只在读取操作完成之后才有效,并且数据的格式取决于读取操作是由哪个方法发起的.所以必须使用reader.onload，</span></div><div class="line">        <span class="keyword">var</span> url = reader.result;</div><div class="line">        <span class="comment">//reader读取的文件内容是base64,利用这个url就能实现上传前预览图片</span></div><div class="line">        img.src = url;</div><div class="line">    &#125;;</div><div class="line">    img.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="comment">//生成比例</span></div><div class="line">        <span class="keyword">var</span> width = img.width, height = img.height;</div><div class="line">        <span class="comment">//计算缩放比例</span></div><div class="line">        <span class="keyword">var</span> rate = <span class="number">1</span>;</div><div class="line">        <span class="keyword">if</span> (width &gt;= height) &#123;</div><div class="line">            <span class="keyword">if</span> (width &gt; maxLen) &#123;</div><div class="line">                rate = maxLen / width;</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">if</span> (height &gt; maxLen) &#123;</div><div class="line">                rate = maxLen / height;</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line">        img.width = width * rate;</div><div class="line">        img.height = height * rate;</div><div class="line">        <span class="keyword">var</span> canvas = <span class="built_in">document</span>.createElement(<span class="string">"canvas"</span>);</div><div class="line">        <span class="keyword">var</span> ctx = canvas.getContext(<span class="string">"2d"</span>);</div><div class="line">        canvas.width = img.width;</div><div class="line">        canvas.height = img.height;</div><div class="line">        ctx.drawImage(img, <span class="number">0</span>, <span class="number">0</span>, img.width, img.height);</div><div class="line">        <span class="comment">// quality 经过测试 95% 与原图最为接近，超过98% size远大于原图</span></div><div class="line">        <span class="keyword">var</span> base64 = canvas.toDataURL(<span class="string">'image/jpeg'</span>, quality / <span class="number">100</span> * <span class="number">0.95</span>);</div><div class="line">        callBack(base64);</div><div class="line">    &#125;;</div><div class="line">    reader.readAsDataURL(file);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>怎么使用</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$(function () &#123;</div><div class="line">    $(&quot;#imgFile&quot;).change(function () &#123;</div><div class="line">        var file = $(this)[0].files[0];</div><div class="line">        imgToBase64(file, 720, 100, function (base64) &#123;</div><div class="line">            $(&quot;#imgContent&quot;)[0].src = base64;</div><div class="line">            $(&quot;#imgContent&quot;)[0].width = 300;</div><div class="line">        &#125;);</div><div class="line">    &#125;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
@@ -623,6 +623,170 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/06/20/16年/闭包详解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="石进华">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3929251423,454148251&fm=27&gp=0.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="石进华的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/06/20/16年/闭包详解/" itemprop="url">闭包详解</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-20T18:10:40+08:00">
+                2016-06-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          闭包（closure）是Javascript语言的一个难点，也是它的特色，很多高级应用都要依靠闭包实现。
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/06/20/16年/闭包详解/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+
+    
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/06/12/16年/从解面试题中学javascript原型与原型链/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -733,40 +897,14 @@
 
       
         
-          
-            <blockquote>
-<p>javascript的原型和原型链，对于新手来说是比较难以理解的部分，但是这也正是javascript中很重要的一部分，今天我们就以一道面试题开始了解下javascript的原型的原型链。</p>
-</blockquote>
-<h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var F=function()&#123;&#125;;</div><div class="line">Object.prototype.a=function()&#123;&#125;;</div><div class="line">Function.prototype.b=function()&#123;&#125;;</div><div class="line">var f=new F();</div><div class="line"></div><div class="line">关于这段代码正确的结论是：（）</div><div class="line">f能取到a，但取不到b</div><div class="line">f能取到a,b</div><div class="line">F能取到b，不能取到a</div><div class="line">F能取到a，不能取到b</div></pre></td></tr></table></figure>
-<p>需要理清这个问题， 需要对javascript的原型和原型链有一定的了解，大家不妨试试解答，如果能理清这个题的思路，就没有必要看下面的内容了。</p>
-<h4 id="普通对象和函数对象"><a href="#普通对象和函数对象" class="headerlink" title="普通对象和函数对象"></a>普通对象和函数对象</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">var o1 = &#123;&#125;; </div><div class="line">var o2 =new Object();</div><div class="line">var o3 = new f1();</div><div class="line"></div><div class="line">function f1()&#123;&#125;; </div><div class="line">var f2 = function()&#123;&#125;;</div><div class="line">var f3 = new Function(&apos;str&apos;,&apos;console.log(str)&apos;);</div><div class="line"></div><div class="line">console.log(typeof Object); //function </div><div class="line">console.log(typeof Function); //function  </div><div class="line"></div><div class="line">console.log(typeof f1); //function </div><div class="line">console.log(typeof f2); //function </div><div class="line">console.log(typeof f3); //function   </div><div class="line"></div><div class="line">console.log(typeof o1); //object </div><div class="line">console.log(typeof o2); //object </div><div class="line">console.log(typeof o3); //object</div></pre></td></tr></table></figure>
-<p>javacript 中一切皆对象，分为普通对象和函数对象，怎么区分呢，<strong>凡是通过new Function()创建的对象就是函数对象，其余都是普通对象，f1,f2,归根结底都是通过 new Function()的方式进行创建的。Function Object 也都是通过 New Function()创建的。</strong></p>
-<h4 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age, job</span>) </span>&#123;</div><div class="line"> <span class="keyword">this</span>.name = name;</div><div class="line"> <span class="keyword">this</span>.age = age;</div><div class="line"> <span class="keyword">this</span>.job = job;</div><div class="line"> <span class="keyword">this</span>.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; alert(<span class="keyword">this</span>.name) &#125; </div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> person1 = <span class="keyword">new</span> Person(<span class="string">'Zaxlct'</span>, <span class="number">28</span>, <span class="string">'Student'</span>);</div><div class="line"><span class="keyword">var</span> person2 = <span class="keyword">new</span> Person(<span class="string">'Mick'</span>, <span class="number">23</span>, <span class="string">'Doctor'</span>);</div></pre></td></tr></table></figure>
-<p>person1和person2都是Person的实例，每个实例都有一个constructor属性，这个属性指向实例的构造函数，这里指向的是Person。</p>
-<p>这里就得到第一个概念：</p>
-<p><strong>实例的构造函数属性（constructor）指向的构造函数</strong></p>
-<h5 id="原型对象"><a href="#原型对象" class="headerlink" title="原型对象"></a>原型对象</h5><p>每个对象都有<strong>proto</strong>属性，只有函数对象有prototype属性（这个不知怎么用实例解释，只有自己在控制台打印查看了）</p>
-<p>什么是原型对象？</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Person.prototype //这就原型对象</div></pre></td></tr></table></figure>
-<blockquote>
-<p>在默认情况下，所有的原型对象都会自动获得一个 constructor（构造函数）属性，这个属性（是一个指针）指向 prototype 属性所在的函数（Person）</p>
-</blockquote>
-<p>上面这句话比较拗口，用上面例子表示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Person.prototype.constructor === Person //true</div></pre></td></tr></table></figure>
-<p>上面我们提到每个实例都有一个constructor属性，指向构造函数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">person1.constructor === Person //true</div><div class="line">Person.prototype.constructor === Person //true</div></pre></td></tr></table></figure>
-<p>上面代码我们能发现什么？<br><strong>person1是Person的实例，Person.prototype 也是Person的实例</strong></p>
-<p>Person.prototype的赋值可以看做如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> A = <span class="keyword">new</span> Person();</div><div class="line">Person.prototype = A;</div></pre></td></tr></table></figure>
-<p>第二个概念</p>
-<p><strong>原型对象（Person.prototype）是 构造函数（Person）的一个实例。</strong></p>
-<p>原型对象其实就是普通对象（但是Function.prototype除外，他还是函数对象，但是他很特殊，他没有prototype属性，前面说过，所有函数对象都有prototype属性）<br>看下面例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function Person()&#123;&#125;;</div><div class="line"> console.log(Person.prototype) //Person&#123;&#125;</div><div class="line"> console.log(typeof Person.prototype) //Object</div><div class="line"> console.log(typeof Function.prototype) // Function，这个特殊</div><div class="line"> console.log(typeof Object.prototype) // Object</div><div class="line"> console.log(typeof Function.prototype.prototype) //undefined</div></pre></td></tr></table></figure>
-<p>Function.prototype 为什么是函数对象呢？</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var A = new Fucntion();</div><div class="line">Function.prototype === A</div></pre></td></tr></table></figure>
-<p><strong>前面提到过凡是通过new Function创建对象都是函数对象，因为A是函数对象，所以Function.prototype是函数对象</strong><br>未完待续。。。</p>
-
-          
+          javascript的原型和原型链，对于新手来说是比较难以理解的部分，但是这也正是javascript中很重要的一部分，今天我们就以一道面试题开始了解下javascript的原型的原型链。
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/06/12/16年/从解面试题中学javascript原型与原型链/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1347,7 +1485,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1369,7 +1507,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

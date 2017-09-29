@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-09-29T01:22:18.947Z</updated>
+  <updated>2017-09-29T06:01:07.446Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://yoursite.com/2017/09/29/17%E5%B9%B4/%E5%89%8D%E7%AB%AF%E6%89%AB%E7%9B%B2%E4%B9%8B%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/"/>
     <id>http://yoursite.com/2017/09/29/17年/前端扫盲之图片压缩/</id>
     <published>2017-09-29T00:10:40.000Z</published>
-    <updated>2017-09-29T01:22:18.947Z</updated>
+    <updated>2017-09-29T06:01:07.446Z</updated>
     
     <summary type="html">
     
@@ -29,8 +29,8 @@
       
         
         
-          &lt;h5 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h5&gt;&lt;p&gt;传统web技术很难对文件进行操作，h5的技术新起，给前端很多的可能。&lt;/p&gt;
-&lt;h5 id=&quot;需求&quot;&gt;&lt;a href=&quot;#需求&quot;
+          &lt;h4 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h4&gt;&lt;p&gt;传统web技术很难对文件进行操作，h5的技术新起，给前端很多的可能。&lt;/p&gt;
+&lt;h4 id=&quot;需求&quot;&gt;&lt;a href=&quot;#需求&quot;
         
       
     
@@ -76,24 +76,37 @@
   </entry>
   
   <entry>
+    <title>闭包详解</title>
+    <link href="http://yoursite.com/2016/06/20/16%E5%B9%B4/%E9%97%AD%E5%8C%85%E8%AF%A6%E8%A7%A3/"/>
+    <id>http://yoursite.com/2016/06/20/16年/闭包详解/</id>
+    <published>2016-06-20T10:10:40.000Z</published>
+    <updated>2017-09-29T05:57:52.902Z</updated>
+    
+    <summary type="html">
+    
+      闭包（closure）是Javascript语言的一个难点，也是它的特色，很多高级应用都要依靠闭包实现。
+    
+    </summary>
+    
+      <category term="技术" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="javscript" scheme="http://yoursite.com/tags/javscript/"/>
+    
+      <category term="闭包" scheme="http://yoursite.com/tags/%E9%97%AD%E5%8C%85/"/>
+    
+  </entry>
+  
+  <entry>
     <title>从解面试题中学javascript原型与原型链</title>
     <link href="http://yoursite.com/2016/06/12/16%E5%B9%B4/%E4%BB%8E%E8%A7%A3%E9%9D%A2%E8%AF%95%E9%A2%98%E4%B8%AD%E5%AD%A6javascript%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE/"/>
     <id>http://yoursite.com/2016/06/12/16年/从解面试题中学javascript原型与原型链/</id>
     <published>2016-06-12T00:10:40.000Z</published>
-    <updated>2017-09-27T11:25:07.385Z</updated>
+    <updated>2017-09-29T05:59:59.342Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;blockquote&gt;
-&lt;p&gt;javascript的原型和原型链，对于新手来说是比较难以理解的部分，但是这也正是javascript中很重要的一部分，今天我们就以一道面试题开始了解下javascript的原型的原型链。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h4
-        
-      
+      javascript的原型和原型链，对于新手来说是比较难以理解的部分，但是这也正是javascript中很重要的一部分，今天我们就以一道面试题开始了解下javascript的原型的原型链。
     
     </summary>
     

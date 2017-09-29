@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+    
+    <entry>
+      <title><![CDATA[前端扫盲之图片压缩]]></title>
+      <url>/2017/09/29/17%E5%B9%B4/%E5%89%8D%E7%AB%AF%E6%89%AB%E7%9B%B2%E4%B9%8B%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/</url>
+      <content type="html"><![CDATA[<h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><p>传统web技术很难对文件进行操作，h5的技术新起，给前端很多的可能。</p>
+<h5 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h5><p>有这么一个需求，在微信端有上传图片的需求，但是问题是，图片太大，需要等待的时间很长的响应时间，而且失败的可能性很大，业务方并不是强制需要原图，图片可以压缩缩放。</p>
+<h5 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h5><p>代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * https://github.com/mynane | Released under MIT license</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> * 图片转化为base64 并实现缩放和控制图片质量</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> * @param &#123;Object&#125; file input file 对象</span></div><div class="line"><span class="comment"> * @maxLen &#123;number&#125; maxLen 图片最大长度和宽度</span></div><div class="line"><span class="comment"> * @param &#123;number&#125; quality 图片质量1-100</span></div><div class="line"><span class="comment"> * @param &#123;Function&#125; callBack 成功回调</span></div><div class="line"><span class="comment"> *</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">img2Base64</span>(<span class="params">file, maxLen, quality, callBack</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> img = <span class="keyword">new</span> Image();</div><div class="line">    <span class="comment">//读取客户端上的文件</span></div><div class="line">    <span class="keyword">var</span> reader = <span class="keyword">new</span> FileReader();</div><div class="line">    reader.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="comment">//读取到的文件内容.这个属性只在读取操作完成之后才有效,并且数据的格式取决于读取操作是由哪个方法发起的.所以必须使用reader.onload，</span></div><div class="line">        <span class="keyword">var</span> url = reader.result;</div><div class="line">        <span class="comment">//reader读取的文件内容是base64,利用这个url就能实现上传前预览图片</span></div><div class="line">        img.src = url;</div><div class="line">    &#125;;</div><div class="line">    img.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="comment">//生成比例</span></div><div class="line">        <span class="keyword">var</span> width = img.width, height = img.height;</div><div class="line">        <span class="comment">//计算缩放比例</span></div><div class="line">        <span class="keyword">var</span> rate = <span class="number">1</span>;</div><div class="line">        <span class="keyword">if</span> (width &gt;= height) &#123;</div><div class="line">            <span class="keyword">if</span> (width &gt; maxLen) &#123;</div><div class="line">                rate = maxLen / width;</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">if</span> (height &gt; maxLen) &#123;</div><div class="line">                rate = maxLen / height;</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line">        img.width = width * rate;</div><div class="line">        img.height = height * rate;</div><div class="line">        <span class="keyword">var</span> canvas = <span class="built_in">document</span>.createElement(<span class="string">"canvas"</span>);</div><div class="line">        <span class="keyword">var</span> ctx = canvas.getContext(<span class="string">"2d"</span>);</div><div class="line">        canvas.width = img.width;</div><div class="line">        canvas.height = img.height;</div><div class="line">        ctx.drawImage(img, <span class="number">0</span>, <span class="number">0</span>, img.width, img.height);</div><div class="line">        <span class="comment">// quality 经过测试 95% 与原图最为接近，超过98% size远大于原图</span></div><div class="line">        <span class="keyword">var</span> base64 = canvas.toDataURL(<span class="string">'image/jpeg'</span>, quality / <span class="number">100</span> * <span class="number">0.95</span>);</div><div class="line">        callBack(base64);</div><div class="line">    &#125;;</div><div class="line">    reader.readAsDataURL(file);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>怎么使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$(function () &#123;</div><div class="line">    $(&quot;#imgFile&quot;).change(function () &#123;</div><div class="line">        var file = $(this)[0].files[0];</div><div class="line">        imgToBase64(file, 720, 100, function (base64) &#123;</div><div class="line">            $(&quot;#imgContent&quot;)[0].src = base64;</div><div class="line">            $(&quot;#imgContent&quot;)[0].width = 300;</div><div class="line">        &#125;);</div><div class="line">    &#125;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> javscript </tag>
+            
+            <tag> 原型 </tag>
+            
+            <tag> 原型链 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[webpack插件编写]]></title>
+      <url>/2017/09/20/17%E5%B9%B4/webpack%E6%8F%92%E4%BB%B6%E7%BC%96%E5%86%99/</url>
+      <content type="html"><![CDATA[<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * webpack插件开发采用'动态原型模式'</span></div><div class="line"><span class="comment"> * 插件开发，最重要的两个对象：compiler、compilation</span></div><div class="line"><span class="comment"> * @param options</span></div><div class="line"><span class="comment"> * @constructor</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">MyPlugin</span>(<span class="params">options</span>) </span>&#123; <span class="comment">// 根据 options 配置你的插件</span></div><div class="line"></div><div class="line">&#125;</div><div class="line"><span class="comment">// 我们可以在原型上添加一些方法</span></div><div class="line">MyPlugin.prototype.someFunc = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;<span class="comment">/*something*/</span>&#125;</div><div class="line"></div><div class="line"><span class="comment">// apply方法是必须要有的，因为当我们使用一个插件时（new somePlugins(&#123;&#125;)），webpack会去寻找插件的apply方法并执行</span></div><div class="line">MyPlugin.prototype.apply = <span class="function"><span class="keyword">function</span>(<span class="params">compiler</span>) </span>&#123;</div><div class="line">  <span class="comment">// compiler是什么？compiler是webpack的'编译器'引用</span></div><div class="line"></div><div class="line"></div><div class="line">  <span class="comment">// compiler.plugin('***')和compilation.plugin('***')代表什么？</span></div><div class="line">  <span class="comment">// document.addEventListener熟悉吧？其实是类似的</span></div><div class="line">  <span class="comment">// compiler.plugin('***')就相当于给compiler设置了事件监听</span></div><div class="line">  <span class="comment">// 所以compiler.plugin('compile')就代表：当编译器监听到compile事件时，我们应该做些什么</span></div><div class="line"></div><div class="line">  <span class="comment">// compile（'编译器'对'开始编译'这个事件的监听）</span></div><div class="line">  compiler.plugin(<span class="string">"compile"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">params</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"The compiler is starting to compile..."</span>);</div><div class="line">  &#125;);</div><div class="line"></div><div class="line">  <span class="comment">// compilation（'编译器'对'编译ing'这个事件的监听）</span></div><div class="line">  compiler.plugin(<span class="string">"compilation"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">compilation</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"The compiler is starting a new compilation..."</span>);</div><div class="line">    <span class="comment">// 在compilation事件监听中，我们可以访问compilation引用，它是一个代表编译过程的对象引用</span></div><div class="line">    <span class="comment">// 我们一定要区分compiler和compilation，一个代表编译器实体，另一个代表编译过程</span></div><div class="line">    <span class="comment">// optimize('编译过程'对'优化文件'这个事件的监听)</span></div><div class="line">    compilation.plugin(<span class="string">"optimize"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">"The compilation is starting to optimize files..."</span>);</div><div class="line">    &#125;);</div><div class="line">  &#125;);</div><div class="line"></div><div class="line">  <span class="comment">// emit（'编译器'对'生成最终资源'这个事件的监听）</span></div><div class="line">  compiler.plugin(<span class="string">"emit"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">compilation, callback</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"The compilation is going to emit files..."</span>);</div><div class="line"></div><div class="line">    <span class="comment">// compilation.chunks是块的集合（构建后将要输出的文件，即编译之后得到的结果）</span></div><div class="line">    compilation.chunks.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">chunk</span>) </span>&#123;</div><div class="line">      <span class="comment">// chunk.modules是模块的集合（构建时webpack梳理出的依赖，即import、require的module）</span></div><div class="line">      <span class="comment">// 形象一点说：chunk.modules是原材料，下面的chunk.files才是最终的成品</span></div><div class="line">      chunk.modules.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">module</span>) </span>&#123;</div><div class="line">        <span class="comment">// module.fileDependencies就是具体的文件，最真实的资源【举例，在css中@import("reset.css")，这里的reset.css就是fileDependencie】</span></div><div class="line">        <span class="built_in">module</span>.fileDependencies.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">filepath</span>) </span>&#123;</div><div class="line">          <span class="comment">// 到这一步，就可以操作源文件了</span></div><div class="line">        &#125;);</div><div class="line">      &#125;);</div><div class="line"></div><div class="line">      <span class="comment">// 最终生成的文件的集合</span></div><div class="line">      chunk.files.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">filename</span>) </span>&#123;</div><div class="line">        <span class="comment">// source()可以得到每个文件的源码</span></div><div class="line">        <span class="keyword">var</span> source = compilation.assets[filename].source();</div><div class="line">      &#125;);</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    <span class="comment">// callback在最后必须调用</span></div><div class="line">    callback();</div><div class="line">  &#125;);</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// 以上compiler和compilation的事件监听只是一小部分，详细API可见该链接http://www.css88.com/doc/webpack2/api/plugins/</span></div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = MyPlugin;</div></pre></td></tr></table></figure>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="http://t1.27270.com/uploads/tu/201708/9999/rn2268e92886.jpg" alt="图片"></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> webpack </tag>
+            
+            <tag> 插件 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[从解面试题中学javascript原型与原型链]]></title>
+      <url>/2016/06/12/16%E5%B9%B4/%E4%BB%8E%E8%A7%A3%E9%9D%A2%E8%AF%95%E9%A2%98%E4%B8%AD%E5%AD%A6javascript%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>javascript的原型和原型链，对于新手来说是比较难以理解的部分，但是这也正是javascript中很重要的一部分，今天我们就以一道面试题开始了解下javascript的原型的原型链。</p>
+</blockquote>
+<h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var F=function()&#123;&#125;;</div><div class="line">Object.prototype.a=function()&#123;&#125;;</div><div class="line">Function.prototype.b=function()&#123;&#125;;</div><div class="line">var f=new F();</div><div class="line"></div><div class="line">关于这段代码正确的结论是：（）</div><div class="line">f能取到a，但取不到b</div><div class="line">f能取到a,b</div><div class="line">F能取到b，不能取到a</div><div class="line">F能取到a，不能取到b</div></pre></td></tr></table></figure>
+<p>需要理清这个问题， 需要对javascript的原型和原型链有一定的了解，大家不妨试试解答，如果能理清这个题的思路，就没有必要看下面的内容了。</p>
+<h4 id="普通对象和函数对象"><a href="#普通对象和函数对象" class="headerlink" title="普通对象和函数对象"></a>普通对象和函数对象</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">var o1 = &#123;&#125;; </div><div class="line">var o2 =new Object();</div><div class="line">var o3 = new f1();</div><div class="line"></div><div class="line">function f1()&#123;&#125;; </div><div class="line">var f2 = function()&#123;&#125;;</div><div class="line">var f3 = new Function(&apos;str&apos;,&apos;console.log(str)&apos;);</div><div class="line"></div><div class="line">console.log(typeof Object); //function </div><div class="line">console.log(typeof Function); //function  </div><div class="line"></div><div class="line">console.log(typeof f1); //function </div><div class="line">console.log(typeof f2); //function </div><div class="line">console.log(typeof f3); //function   </div><div class="line"></div><div class="line">console.log(typeof o1); //object </div><div class="line">console.log(typeof o2); //object </div><div class="line">console.log(typeof o3); //object</div></pre></td></tr></table></figure>
+<p>javacript 中一切皆对象，分为普通对象和函数对象，怎么区分呢，<strong>凡是通过new Function()创建的对象就是函数对象，其余都是普通对象，f1,f2,归根结底都是通过 new Function()的方式进行创建的。Function Object 也都是通过 New Function()创建的。</strong></p>
+<h4 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age, job</span>) </span>&#123;</div><div class="line"> <span class="keyword">this</span>.name = name;</div><div class="line"> <span class="keyword">this</span>.age = age;</div><div class="line"> <span class="keyword">this</span>.job = job;</div><div class="line"> <span class="keyword">this</span>.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; alert(<span class="keyword">this</span>.name) &#125; </div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> person1 = <span class="keyword">new</span> Person(<span class="string">'Zaxlct'</span>, <span class="number">28</span>, <span class="string">'Student'</span>);</div><div class="line"><span class="keyword">var</span> person2 = <span class="keyword">new</span> Person(<span class="string">'Mick'</span>, <span class="number">23</span>, <span class="string">'Doctor'</span>);</div></pre></td></tr></table></figure>
+<p>person1和person2都是Person的实例，每个实例都有一个constructor属性，这个属性指向实例的构造函数，这里指向的是Person。</p>
+<p>这里就得到第一个概念：</p>
+<p><strong>实例的构造函数属性（constructor）指向的构造函数</strong></p>
+<h5 id="原型对象"><a href="#原型对象" class="headerlink" title="原型对象"></a>原型对象</h5><p>每个对象都有<strong>proto</strong>属性，只有函数对象有prototype属性（这个不知怎么用实例解释，只有自己在控制台打印查看了）</p>
+<p>什么是原型对象？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Person.prototype //这就原型对象</div></pre></td></tr></table></figure>
+<blockquote>
+<p>在默认情况下，所有的原型对象都会自动获得一个 constructor（构造函数）属性，这个属性（是一个指针）指向 prototype 属性所在的函数（Person）</p>
+</blockquote>
+<p>上面这句话比较拗口，用上面例子表示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Person.prototype.constructor === Person //true</div></pre></td></tr></table></figure>
+<p>上面我们提到每个实例都有一个constructor属性，指向构造函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">person1.constructor === Person //true</div><div class="line">Person.prototype.constructor === Person //true</div></pre></td></tr></table></figure>
+<p>上面代码我们能发现什么？<br><strong>person1是Person的实例，Person.prototype 也是Person的实例</strong></p>
+<p>Person.prototype的赋值可以看做如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> A = <span class="keyword">new</span> Person();</div><div class="line">Person.prototype = A;</div></pre></td></tr></table></figure>
+<p>第二个概念</p>
+<p><strong>原型对象（Person.prototype）是 构造函数（Person）的一个实例。</strong></p>
+<p>原型对象其实就是普通对象（但是Function.prototype除外，他还是函数对象，但是他很特殊，他没有prototype属性，前面说过，所有函数对象都有prototype属性）<br>看下面例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function Person()&#123;&#125;;</div><div class="line"> console.log(Person.prototype) //Person&#123;&#125;</div><div class="line"> console.log(typeof Person.prototype) //Object</div><div class="line"> console.log(typeof Function.prototype) // Function，这个特殊</div><div class="line"> console.log(typeof Object.prototype) // Object</div><div class="line"> console.log(typeof Function.prototype.prototype) //undefined</div></pre></td></tr></table></figure>
+<p>Function.prototype 为什么是函数对象呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var A = new Fucntion();</div><div class="line">Function.prototype === A</div></pre></td></tr></table></figure>
+<p><strong>前面提到过凡是通过new Function创建对象都是函数对象，因为A是函数对象，所以Function.prototype是函数对象</strong><br>未完待续。。。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> javscript </tag>
+            
+            <tag> 原型 </tag>
+            
+            <tag> 原型链 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[box-sizing属性简介]]></title>
+      <url>/2016/06/02/16%E5%B9%B4/box-sizing%E7%B2%97%E7%95%A5%E4%BB%8B%E7%BB%8D/</url>
+      <content type="html"><![CDATA[<p><strong>box-sizing</strong>属性可以为三个值之一：</p>
+<ul>
+<li>content-box（default）</li>
+<li>border-box</li>
+<li>padding-box</li>
+</ul>
+<p><strong>content-box</strong>，border和padding不计算入width之内</p>
+<p><strong>padding-box</strong>，padding计算入width内</p>
+<p><strong>border-box</strong>，border和padding计算入width之内，其实就是怪异模式了~</p>
+<p>ie8+浏览器支持<strong>content-box</strong>和<strong>border-box</strong>；</p>
+<p>ff则支持全部三个值。</p>
+<p>使用时：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">-webkit-box-sizing: 100px; // for ios-safari, android</div><div class="line"></div><div class="line">-moz-box-sizing:100px; //for ff</div><div class="line"></div><div class="line">box-sizing:100px; //for other</div></pre></td></tr></table></figure>]]></content>
+      
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> css3 </tag>
+            
+            <tag> box-sizing </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[CSS未知宽高元素水平垂直居中]]></title>
+      <url>/2016/05/20/16%E5%B9%B4/CSS%E6%9C%AA%E7%9F%A5%E5%AE%BD%E9%AB%98%E5%85%83%E7%B4%A0%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD/</url>
+      <content type="html"><![CDATA[<h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><p>思路：显示设置父元素为：table，子元素为：cell-table，这样就可以使用vertical-align: center，实现水平居中</p>
+<p>优点：父元素（parent）可以动态的改变高度（table元素的特性）</p>
+<p>缺点：IE8以下不支持</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=&quot;en&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">    &lt;title&gt;未知宽高元素水平垂直居中&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;style&gt;</div><div class="line"></div><div class="line">.parent1&#123;</div><div class="line">    display: table;</div><div class="line">    height:300px;</div><div class="line">    width: 300px;</div><div class="line">    background-color: #FD0C70;</div><div class="line">&#125;</div><div class="line">.parent1 .child&#123;</div><div class="line">    display: table-cell;</div><div class="line">    vertical-align: middle;</div><div class="line">    text-align: center;</div><div class="line">    color: #fff;</div><div class="line">    font-size: 16px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">&lt;/style&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;div class=&quot;parent1&quot;&gt;</div><div class="line">        &lt;div class=&quot;child&quot;&gt;hello world-1&lt;/div&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><p>思路：使用一个空标签span设置他的vertical-align基准线为中间，并且让他为inline-block，宽度为0</p>
+<p>缺点：多了一个没用的空标签，display:inline-blockIE 6 7是不支持的(添加上：_zoom1;*display:inline)。<br>当然也可以使用伪元素来代替span标签，不过IE支持也不好，但这是后话了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=&quot;en&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">    &lt;title&gt;未知宽高元素水平垂直居中&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;style&gt;</div><div class="line">.parent2&#123;</div><div class="line">    height:300px;</div><div class="line">    width: 300px;</div><div class="line">    text-align: center;</div><div class="line">    background: #FD0C70;</div><div class="line">&#125;</div><div class="line">.parent2 span&#123;</div><div class="line">    display: inline-block;;</div><div class="line">    width: 0;</div><div class="line">    height: 100%;</div><div class="line">    vertical-align: middle;</div><div class="line">    zoom: 1;/*BFC*/</div><div class="line">    *display: inline;</div><div class="line">&#125;</div><div class="line">.parent2 .child&#123;</div><div class="line">    display: inline-block;</div><div class="line">    color: #fff;</div><div class="line">    zoom: 1;/*BFC*/</div><div class="line">    *display: inline;</div><div class="line">&#125;</div><div class="line"></div><div class="line">&lt;/style&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;div class=&quot;parent1&quot;&gt;</div><div class="line">        &lt;div class=&quot;child&quot;&gt;hello world-1&lt;/div&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line"></div><div class="line">    &lt;div class=&quot;parent2&quot;&gt;</div><div class="line">        &lt;span&gt;&lt;/span&gt;</div><div class="line">        &lt;div class=&quot;child&quot;&gt;hello world-2&lt;/div&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h3 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h3><p>思路：子元素绝对定位，距离顶部 50%，左边50%，然后使用css3 transform:translate(-50%; -50%)</p>
+<p>优点：高大上,可以在webkit内核的浏览器中使用</p>
+<p>缺点：不支持IE9以下不支持transform属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=&quot;en&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">    &lt;title&gt;未知宽高元素水平垂直居中&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;style&gt;</div><div class="line">.parent3&#123;</div><div class="line">    position: relative;</div><div class="line">    height:300px;</div><div class="line">    width: 300px;</div><div class="line">    background: #FD0C70;</div><div class="line">&#125;</div><div class="line">.parent3 .child&#123;</div><div class="line">    position: absolute;</div><div class="line">    top: 50%;</div><div class="line">    left: 50%;</div><div class="line">    color: #fff;</div><div class="line">    transform: translate(-50%, -50%);</div><div class="line">&#125;</div><div class="line">&lt;/style&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;div class=&quot;parent3&quot;&gt;</div><div class="line">        &lt;div class=&quot;child&quot;&gt;hello world-3&lt;/div&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h3 id="方法四"><a href="#方法四" class="headerlink" title="方法四"></a>方法四</h3><p>思路：使用css3 flex布局</p>
+<p>优点：简单 快捷</p>
+<p>缺点：兼容不好吧，详情见：<a href="http://caniuse.com/#search=flex" target="_blank" rel="external">http://caniuse.com/#search=flex</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=&quot;en&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">    &lt;title&gt;未知宽高元素水平垂直居中&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;style&gt;</div><div class="line">.parent4&#123;</div><div class="line">    display: flex;</div><div class="line">    justify-content: center;</div><div class="line">    align-items: center;</div><div class="line">    width: 300px;</div><div class="line">    height:300px;</div><div class="line">    background: #FD0C70;</div><div class="line">&#125;</div><div class="line">.parent4 .child&#123;</div><div class="line">    color:#fff;</div><div class="line">&#125;</div><div class="line">&lt;/style&gt;</div><div class="line">&lt;body&gt;div&gt; &lt;div class=&quot;parent4&quot;&gt;</div><div class="line">        &lt;div class=&quot;child&quot;&gt;hello world-4&lt;/div&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> css </tag>
+            
+            <tag> 布局 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[目标]]></title>
+      <url>/2016/05/10/16%E5%B9%B4/%E7%9B%AE%E6%A0%87/</url>
+      <content type="html"><![CDATA[<h4 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h4><ol>
+<li>每两周至少写一篇博客</li>
+<li>每两个月需要买一本技术相关的书籍</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> 杂记 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 杂记 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+  
+  
+</search>

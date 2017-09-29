@@ -1265,6 +1265,9 @@ pre .javascript .function {
   .post .post-block {
     padding: 20px;
   }
+  .site-subtitle {
+    display: none;
+  }
   .post-body pre {
     padding: 10px;
   }
@@ -1823,7 +1826,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #4affdf;
+  background: #e4ff59;
 }
 .links-of-blogroll {
   font-size: 13px;

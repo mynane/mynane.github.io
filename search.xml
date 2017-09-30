@@ -56,6 +56,40 @@
     </entry>
     
     <entry>
+      <title><![CDATA[ubuntu下mongodb数据库定时备份]]></title>
+      <url>/2016/07/12/16%E5%B9%B4/ubuntu%E4%B8%8Bmongodb%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%9A%E6%97%B6%E5%A4%87%E4%BB%BD/</url>
+      <content type="html"><![CDATA[<h3 id="创建Mongodb数据库备份目录"><a href="#创建Mongodb数据库备份目录" class="headerlink" title="创建Mongodb数据库备份目录"></a>创建Mongodb数据库备份目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mkdir -p /home/backup/mongod_bak_now</div><div class="line"></div><div class="line">mkdir -p /home/backup/mongod_bak_list</div></pre></td></tr></table></figure>
+<h3 id="新建Mongodb数据库备份脚本"><a href="#新建Mongodb数据库备份脚本" class="headerlink" title="新建Mongodb数据库备份脚本"></a>新建Mongodb数据库备份脚本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /home/backup/mongod_bak.sh #新建文件，输入以下代码</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">#!/bin/sh</div><div class="line"></div><div class="line">DUMP=/usr/local/mongodb/bin/mongodump #mongodump备份文件执行路径</div><div class="line"></div><div class="line">OUT_DIR=/home/backup/mongod_bak/mongod_bak_now #临时备份目录</div><div class="line"></div><div class="line">TAR_DIR=/home/backup/mongod_bak/mongod_bak_list #备份存放路径</div><div class="line"></div><div class="line">DATE=`date +%Y_%m_%d` #获取当前系统时间</div><div class="line"></div><div class="line">DB_USER=username #数据库账号</div><div class="line"></div><div class="line">DB_PASS=123456 #数据库密码</div><div class="line"></div><div class="line">DAYS=7 #DAYS=7代表删除7天前的备份，即只保留最近7天的备份</div><div class="line"></div><div class="line">TAR_BAK=&quot;mongod_bak_$DATE.tar.gz&quot; #最终保存的数据库备份文件名</div><div class="line"></div><div class="line">cd $OUT_DIR</div><div class="line"></div><div class="line">rm -rf $OUT_DIR/*</div><div class="line"></div><div class="line">mkdir -p $OUT_DIR/$DATE</div><div class="line"></div><div class="line">$DUMP -u $DB_USER -p $DB_PASS -o $OUT_DIR/$DATE #备份全部数据库</div><div class="line"></div><div class="line">tar -zcvf $TAR_DIR/$TAR_BAK $OUT_DIR/$DATE #压缩为.tar.gz格式</div><div class="line"></div><div class="line">find $TAR_DIR/ -mtime +$DAYS -delete #删除7天前的备份文件</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:wq! #保存退出</div></pre></td></tr></table></figure>
+<h3 id="修改文件属性，使其可执行"><a href="#修改文件属性，使其可执行" class="headerlink" title="修改文件属性，使其可执行"></a>修改文件属性，使其可执行</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chmod +x /home/backup/mongod_bak.sh</div></pre></td></tr></table></figure>
+<h3 id="添加计划任务"><a href="#添加计划任务" class="headerlink" title="添加计划任务"></a>添加计划任务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">crontab -e</div></pre></td></tr></table></figure>
+<p>在线面追加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">30 1 * * * root /home/backup/mongod_bak.sh #表示每天凌晨1点30执行备份</div></pre></td></tr></table></figure>
+<p>重启crontab</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo service cron restart</div></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> 技术 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> ubuntu </tag>
+            
+            <tag> 定时任务 </tag>
+            
+            <tag> mongodb 备份 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[typescript中文手册]]></title>
       <url>/2016/07/02/16%E5%B9%B4/typescript%E4%B8%AD%E6%96%87%E6%89%8B%E5%86%8C/</url>
       <content type="html"><![CDATA[<h3 id="基础类型"><a href="#基础类型" class="headerlink" title="基础类型"></a>基础类型</h3><p>为了让程序有价值，我们需要能够处理最简单的数据单元：数字，字符串，结构体，布尔值等。<br>TypeScript支持与JavaScript几乎相同的数据类型，此外还提供了实用的枚举类型方便我们使用。</p>

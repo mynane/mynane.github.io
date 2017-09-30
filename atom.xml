@@ -76,6 +76,30 @@
   </entry>
   
   <entry>
+    <title>ubuntu下mongodb数据库定时备份</title>
+    <link href="http://yoursite.com/2016/07/12/16%E5%B9%B4/ubuntu%E4%B8%8Bmongodb%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%9A%E6%97%B6%E5%A4%87%E4%BB%BD/"/>
+    <id>http://yoursite.com/2016/07/12/16年/ubuntu下mongodb数据库定时备份/</id>
+    <published>2016-07-12T06:22:42.000Z</published>
+    <updated>2017-09-30T07:01:02.473Z</updated>
+    
+    <summary type="html">
+    
+      mongodb数据备份
+    
+    </summary>
+    
+      <category term="技术" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="ubuntu" scheme="http://yoursite.com/tags/ubuntu/"/>
+    
+      <category term="定时任务" scheme="http://yoursite.com/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/"/>
+    
+      <category term="mongodb 备份" scheme="http://yoursite.com/tags/mongodb-%E5%A4%87%E4%BB%BD/"/>
+    
+  </entry>
+  
+  <entry>
     <title>typescript中文手册</title>
     <link href="http://yoursite.com/2016/07/02/16%E5%B9%B4/typescript%E4%B8%AD%E6%96%87%E6%89%8B%E5%86%8C/"/>
     <id>http://yoursite.com/2016/07/02/16年/typescript中文手册/</id>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-10-23T01:14:13.268Z</updated>
+  <updated>2017-09-29T06:01:07.446Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,28 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title></title>
-    <link href="http://yoursite.com/2017/10/23/16%E5%B9%B4/JavaScript%E4%B8%ADgetBoundingClientRect()%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3/"/>
-    <id>http://yoursite.com/2017/10/23/16年/JavaScript中getBoundingClientRect()方法详解/</id>
-    <published>2017-10-23T01:13:49.837Z</published>
-    <updated>2017-10-23T01:14:13.268Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;getBoundingClientRect&quot;&gt;&lt;a href=&quot;#getBoundingClientRect&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>前端扫盲之图片压缩</title>
@@ -94,6 +72,32 @@
       <category term="webpack" scheme="http://yoursite.com/tags/webpack/"/>
     
       <category term="插件" scheme="http://yoursite.com/tags/%E6%8F%92%E4%BB%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript中getBoundingClientRect()方法详解</title>
+    <link href="http://yoursite.com/2016/08/16/16%E5%B9%B4/JavaScript%E4%B8%ADgetBoundingClientRect()%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3/"/>
+    <id>http://yoursite.com/2016/08/16/16年/JavaScript中getBoundingClientRect()方法详解/</id>
+    <published>2016-08-16T00:10:40.000Z</published>
+    <updated>2017-10-23T01:19:07.076Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;getBoundingClientRect&quot;&gt;&lt;a href=&quot;#getBoundingClientRect&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="js" scheme="http://yoursite.com/tags/js/"/>
     
   </entry>
   

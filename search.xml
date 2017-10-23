@@ -3,6 +3,22 @@
   
     
     <entry>
+      <title></title>
+      <url>/2017/10/23/16%E5%B9%B4/JavaScript%E4%B8%ADgetBoundingClientRect()%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3/</url>
+      <content type="html"><![CDATA[<h3 id="getBoundingClientRect"><a href="#getBoundingClientRect" class="headerlink" title="getBoundingClientRect()"></a>getBoundingClientRect()</h3><blockquote>
+<p>这个方法返回一个矩形对象，包含四个属性：left、top、right和bottom。分别表示元素各边与页面上边和左边的距离。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var box=document.getElementById(&apos;box&apos;);         // 获取元素</div><div class="line"></div><div class="line">alert(box.getBoundingClientRect().top);         // 元素上边距离页面上边的距离</div><div class="line"></div><div class="line">alert(box.getBoundingClientRect().right);       // 元素右边距离页面左边的距离</div><div class="line"></div><div class="line">alert(box.getBoundingClientRect().bottom);      // 元素下边距离页面上边的距离</div><div class="line"></div><div class="line">alert(box.getBoundingClientRect().left);        // 元素左边距离页面左边的距离</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：IE、Firefox3+、Opera9.5、Chrome、Safari支持，在IE中，默认坐标从(2,2)开始计算，导致最终距离比其他浏览器多出两个像素，我们需要做个兼容。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">document.documentElement.clientTop;  // 非IE为0，IE为2</div><div class="line"></div><div class="line">document.documentElement.clientLeft; // 非IE为0，IE为2</div><div class="line"></div><div class="line">functiongGetRect (element) &#123;</div><div class="line"></div><div class="line">    var rect = element.getBoundingClientRect();</div><div class="line"></div><div class="line">    var top = document.documentElement.clientTop;</div><div class="line"></div><div class="line">    var left= document.documentElement.clientLeft;</div><div class="line"></div><div class="line">    return&#123;</div><div class="line"></div><div class="line">        top    :   rect.top - top,</div><div class="line"></div><div class="line">        bottom :   rect.bottom - top,</div><div class="line"></div><div class="line">        left   :   rect.left - left,</div><div class="line"></div><div class="line">        right  :   rect.right - left</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[前端扫盲之图片压缩]]></title>
       <url>/2017/09/29/17%E5%B9%B4/%E5%89%8D%E7%AB%AF%E6%89%AB%E7%9B%B2%E4%B9%8B%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/</url>
       <content type="html"><![CDATA[<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>传统web技术很难对文件进行操作，h5的技术新起，给前端很多的可能。</p>

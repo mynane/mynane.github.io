@@ -5,9 +5,9 @@
   <subtitle>enjoy every day</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="http://mynane.github.io/"/>
   <updated>2017-09-29T06:01:07.446Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>http://mynane.github.io/</id>
   
   <author>
     <name>石进华</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>前端扫盲之图片压缩</title>
-    <link href="http://yoursite.com/2017/09/29/17%E5%B9%B4/%E5%89%8D%E7%AB%AF%E6%89%AB%E7%9B%B2%E4%B9%8B%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/"/>
-    <id>http://yoursite.com/2017/09/29/17年/前端扫盲之图片压缩/</id>
+    <link href="http://mynane.github.io/2017/09/29/17%E5%B9%B4/%E5%89%8D%E7%AB%AF%E6%89%AB%E7%9B%B2%E4%B9%8B%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9/"/>
+    <id>http://mynane.github.io/2017/09/29/17年/前端扫盲之图片压缩/</id>
     <published>2017-09-29T00:10:40.000Z</published>
     <updated>2017-09-29T06:01:07.446Z</updated>
     
@@ -36,21 +36,21 @@
     
     </summary>
     
-      <category term="技术" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="http://mynane.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="javscript" scheme="http://yoursite.com/tags/javscript/"/>
+      <category term="javscript" scheme="http://mynane.github.io/tags/javscript/"/>
     
-      <category term="原型" scheme="http://yoursite.com/tags/%E5%8E%9F%E5%9E%8B/"/>
+      <category term="原型" scheme="http://mynane.github.io/tags/%E5%8E%9F%E5%9E%8B/"/>
     
-      <category term="原型链" scheme="http://yoursite.com/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/"/>
+      <category term="原型链" scheme="http://mynane.github.io/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/"/>
     
   </entry>
   
   <entry>
     <title>webpack插件编写</title>
-    <link href="http://yoursite.com/2017/09/20/17%E5%B9%B4/webpack%E6%8F%92%E4%BB%B6%E7%BC%96%E5%86%99/"/>
-    <id>http://yoursite.com/2017/09/20/17年/webpack插件编写/</id>
+    <link href="http://mynane.github.io/2017/09/20/17%E5%B9%B4/webpack%E6%8F%92%E4%BB%B6%E7%BC%96%E5%86%99/"/>
+    <id>http://mynane.github.io/2017/09/20/17年/webpack插件编写/</id>
     <published>2017-09-20T00:00:40.000Z</published>
     <updated>2017-09-29T03:12:58.162Z</updated>
     
@@ -66,19 +66,19 @@
     
     </summary>
     
-      <category term="技术" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="http://mynane.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="webpack" scheme="http://yoursite.com/tags/webpack/"/>
+      <category term="webpack" scheme="http://mynane.github.io/tags/webpack/"/>
     
-      <category term="插件" scheme="http://yoursite.com/tags/%E6%8F%92%E4%BB%B6/"/>
+      <category term="插件" scheme="http://mynane.github.io/tags/%E6%8F%92%E4%BB%B6/"/>
     
   </entry>
   
   <entry>
     <title>JavaScript中getBoundingClientRect()方法详解</title>
-    <link href="http://yoursite.com/2016/08/16/16%E5%B9%B4/JavaScript%E4%B8%ADgetBoundingClientRect()%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3/"/>
-    <id>http://yoursite.com/2016/08/16/16年/JavaScript中getBoundingClientRect()方法详解/</id>
+    <link href="http://mynane.github.io/2016/08/16/16%E5%B9%B4/JavaScript%E4%B8%ADgetBoundingClientRect()%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3/"/>
+    <id>http://mynane.github.io/2016/08/16/16年/JavaScript中getBoundingClientRect()方法详解/</id>
     <published>2016-08-16T00:10:40.000Z</published>
     <updated>2017-10-23T01:19:07.076Z</updated>
     
@@ -94,17 +94,17 @@
     
     </summary>
     
-      <category term="技术" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="http://mynane.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="js" scheme="http://yoursite.com/tags/js/"/>
+      <category term="js" scheme="http://mynane.github.io/tags/js/"/>
     
   </entry>
   
   <entry>
     <title>ubuntu下mongodb数据库定时备份</title>
-    <link href="http://yoursite.com/2016/07/12/16%E5%B9%B4/ubuntu%E4%B8%8Bmongodb%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%9A%E6%97%B6%E5%A4%87%E4%BB%BD/"/>
-    <id>http://yoursite.com/2016/07/12/16年/ubuntu下mongodb数据库定时备份/</id>
+    <link href="http://mynane.github.io/2016/07/12/16%E5%B9%B4/ubuntu%E4%B8%8Bmongodb%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%9A%E6%97%B6%E5%A4%87%E4%BB%BD/"/>
+    <id>http://mynane.github.io/2016/07/12/16年/ubuntu下mongodb数据库定时备份/</id>
     <published>2016-07-12T06:22:42.000Z</published>
     <updated>2017-09-30T07:01:02.473Z</updated>
     
@@ -114,21 +114,21 @@
     
     </summary>
     
-      <category term="技术" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="http://mynane.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="ubuntu" scheme="http://yoursite.com/tags/ubuntu/"/>
+      <category term="ubuntu" scheme="http://mynane.github.io/tags/ubuntu/"/>
     
-      <category term="定时任务" scheme="http://yoursite.com/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/"/>
+      <category term="定时任务" scheme="http://mynane.github.io/tags/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/"/>
     
-      <category term="mongodb 备份" scheme="http://yoursite.com/tags/mongodb-%E5%A4%87%E4%BB%BD/"/>
+      <category term="mongodb 备份" scheme="http://mynane.github.io/tags/mongodb-%E5%A4%87%E4%BB%BD/"/>
     
   </entry>
   
   <entry>
     <title>typescript中文手册</title>
-    <link href="http://yoursite.com/2016/07/02/16%E5%B9%B4/typescript%E4%B8%AD%E6%96%87%E6%89%8B%E5%86%8C/"/>
-    <id>http://yoursite.com/2016/07/02/16年/typescript中文手册/</id>
+    <link href="http://mynane.github.io/2016/07/02/16%E5%B9%B4/typescript%E4%B8%AD%E6%96%87%E6%89%8B%E5%86%8C/"/>
+    <id>http://mynane.github.io/2016/07/02/16年/typescript中文手册/</id>
     <published>2016-07-01T20:02:42.000Z</published>
     <updated>2017-09-30T01:01:04.963Z</updated>
     
@@ -138,19 +138,19 @@
     
     </summary>
     
-      <category term="技术" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="http://mynane.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="typescript" scheme="http://yoursite.com/tags/typescript/"/>
+      <category term="typescript" scheme="http://mynane.github.io/tags/typescript/"/>
     
-      <category term="手册" scheme="http://yoursite.com/tags/%E6%89%8B%E5%86%8C/"/>
+      <category term="手册" scheme="http://mynane.github.io/tags/%E6%89%8B%E5%86%8C/"/>
     
   </entry>
   
   <entry>
     <title>闭包详解</title>
-    <link href="http://yoursite.com/2016/06/20/16%E5%B9%B4/%E9%97%AD%E5%8C%85%E8%AF%A6%E8%A7%A3/"/>
-    <id>http://yoursite.com/2016/06/20/16年/闭包详解/</id>
+    <link href="http://mynane.github.io/2016/06/20/16%E5%B9%B4/%E9%97%AD%E5%8C%85%E8%AF%A6%E8%A7%A3/"/>
+    <id>http://mynane.github.io/2016/06/20/16年/闭包详解/</id>
     <published>2016-06-20T10:10:40.000Z</published>
     <updated>2017-09-29T05:57:52.902Z</updated>
     
@@ -160,19 +160,19 @@
     
     </summary>
     
-      <category term="技术" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="http://mynane.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="javscript" scheme="http://yoursite.com/tags/javscript/"/>
+      <category term="javscript" scheme="http://mynane.github.io/tags/javscript/"/>
     
-      <category term="闭包" scheme="http://yoursite.com/tags/%E9%97%AD%E5%8C%85/"/>
+      <category term="闭包" scheme="http://mynane.github.io/tags/%E9%97%AD%E5%8C%85/"/>
     
   </entry>
   
   <entry>
     <title>从解面试题中学javascript原型与原型链</title>
-    <link href="http://yoursite.com/2016/06/12/16%E5%B9%B4/%E4%BB%8E%E8%A7%A3%E9%9D%A2%E8%AF%95%E9%A2%98%E4%B8%AD%E5%AD%A6javascript%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE/"/>
-    <id>http://yoursite.com/2016/06/12/16年/从解面试题中学javascript原型与原型链/</id>
+    <link href="http://mynane.github.io/2016/06/12/16%E5%B9%B4/%E4%BB%8E%E8%A7%A3%E9%9D%A2%E8%AF%95%E9%A2%98%E4%B8%AD%E5%AD%A6javascript%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE/"/>
+    <id>http://mynane.github.io/2016/06/12/16年/从解面试题中学javascript原型与原型链/</id>
     <published>2016-06-12T00:10:40.000Z</published>
     <updated>2017-09-29T05:59:59.342Z</updated>
     
@@ -182,21 +182,21 @@
     
     </summary>
     
-      <category term="技术" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="http://mynane.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="javscript" scheme="http://yoursite.com/tags/javscript/"/>
+      <category term="javscript" scheme="http://mynane.github.io/tags/javscript/"/>
     
-      <category term="原型" scheme="http://yoursite.com/tags/%E5%8E%9F%E5%9E%8B/"/>
+      <category term="原型" scheme="http://mynane.github.io/tags/%E5%8E%9F%E5%9E%8B/"/>
     
-      <category term="原型链" scheme="http://yoursite.com/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/"/>
+      <category term="原型链" scheme="http://mynane.github.io/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/"/>
     
   </entry>
   
   <entry>
     <title>box-sizing属性简介</title>
-    <link href="http://yoursite.com/2016/06/02/16%E5%B9%B4/box-sizing%E7%B2%97%E7%95%A5%E4%BB%8B%E7%BB%8D/"/>
-    <id>http://yoursite.com/2016/06/02/16年/box-sizing粗略介绍/</id>
+    <link href="http://mynane.github.io/2016/06/02/16%E5%B9%B4/box-sizing%E7%B2%97%E7%95%A5%E4%BB%8B%E7%BB%8D/"/>
+    <id>http://mynane.github.io/2016/06/02/16年/box-sizing粗略介绍/</id>
     <published>2016-06-02T00:10:40.000Z</published>
     <updated>2017-09-27T10:03:45.384Z</updated>
     
@@ -218,19 +218,19 @@
     
     </summary>
     
-      <category term="技术" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="http://mynane.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="css3" scheme="http://yoursite.com/tags/css3/"/>
+      <category term="css3" scheme="http://mynane.github.io/tags/css3/"/>
     
-      <category term="box-sizing" scheme="http://yoursite.com/tags/box-sizing/"/>
+      <category term="box-sizing" scheme="http://mynane.github.io/tags/box-sizing/"/>
     
   </entry>
   
   <entry>
     <title>CSS未知宽高元素水平垂直居中</title>
-    <link href="http://yoursite.com/2016/05/20/16%E5%B9%B4/CSS%E6%9C%AA%E7%9F%A5%E5%AE%BD%E9%AB%98%E5%85%83%E7%B4%A0%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD/"/>
-    <id>http://yoursite.com/2016/05/20/16年/CSS未知宽高元素水平垂直居中/</id>
+    <link href="http://mynane.github.io/2016/05/20/16%E5%B9%B4/CSS%E6%9C%AA%E7%9F%A5%E5%AE%BD%E9%AB%98%E5%85%83%E7%B4%A0%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD/"/>
+    <id>http://mynane.github.io/2016/05/20/16年/CSS未知宽高元素水平垂直居中/</id>
     <published>2016-05-20T04:00:40.000Z</published>
     <updated>2017-09-27T10:03:49.862Z</updated>
     
@@ -240,19 +240,19 @@
     
     </summary>
     
-      <category term="技术" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="http://mynane.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="css" scheme="http://yoursite.com/tags/css/"/>
+      <category term="css" scheme="http://mynane.github.io/tags/css/"/>
     
-      <category term="布局" scheme="http://yoursite.com/tags/%E5%B8%83%E5%B1%80/"/>
+      <category term="布局" scheme="http://mynane.github.io/tags/%E5%B8%83%E5%B1%80/"/>
     
   </entry>
   
   <entry>
     <title>目标</title>
-    <link href="http://yoursite.com/2016/05/10/16%E5%B9%B4/%E7%9B%AE%E6%A0%87/"/>
-    <id>http://yoursite.com/2016/05/10/16年/目标/</id>
+    <link href="http://mynane.github.io/2016/05/10/16%E5%B9%B4/%E7%9B%AE%E6%A0%87/"/>
+    <id>http://mynane.github.io/2016/05/10/16年/目标/</id>
     <published>2016-05-10T08:10:40.000Z</published>
     <updated>2017-09-27T10:03:53.305Z</updated>
     
@@ -268,10 +268,10 @@
     
     </summary>
     
-      <category term="杂记" scheme="http://yoursite.com/categories/%E6%9D%82%E8%AE%B0/"/>
+      <category term="杂记" scheme="http://mynane.github.io/categories/%E6%9D%82%E8%AE%B0/"/>
     
     
-      <category term="杂记" scheme="http://yoursite.com/tags/%E6%9D%82%E8%AE%B0/"/>
+      <category term="杂记" scheme="http://mynane.github.io/tags/%E6%9D%82%E8%AE%B0/"/>
     
   </entry>
   
